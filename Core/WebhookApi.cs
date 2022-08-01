@@ -69,7 +69,17 @@ public static class WebhookApi
     /// </summary>
     /// <param name="components">The components of the uri</param>
     /// <returns>The concentrated Uri</returns>
-    private static string ConcentrateUri(params object[] components)
+    private static Uri ConcentrateUri(params object[] components)
+    {
+        var builder = new StringBuilder(BaseUri);
+        for (int i = 0; i < components.Length; i++)
+        {
+            builder.Append('/');
+            builder.Append(components[i]);
+        }
+
+        return new Uri(builder.ToString());
+    }
     {
         var builder = new StringBuilder(BaseUri);
         for (int i = 0; i < components.Length; i++)
