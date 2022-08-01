@@ -51,7 +51,18 @@ public static class WebhookApi
             throw new WebhookHasNoToken();
 
         using var client = new HttpClient();
-        var uri = new Uri(ConcentrateUri(webhook.Id, webhook.Token));
+        var uri = ConcentrateUri(webhook.Id, webhook.Token);
+        client.BaseAddress = uri;
+
+        var request = new HttpRequestMessage();
+        request.Method = HttpMethod.Post;
+        request.Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = client.Send(request);
+
+        if (response.IsSuccessStatusCode)
+            throw new WebhookRequestFailed(response);
+    }
         client.BaseAddress = uri;
 
         var request = new HttpRequestMessage();
