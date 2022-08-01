@@ -80,6 +80,15 @@ public static class WebhookApi
 
         return new Uri(builder.ToString());
     }
+
+    /// <summary>
+    /// Appends the component to the end of the BaseUri, split by a "/"
+    /// then appends the query to the very end
+    /// </summary>
+    /// <param name="query">The query to append to the end</param>
+    /// <param name="components">The components of the uri</param>
+    /// <returns>The concentrated Uri and query</returns>
+    private static Uri ConcentrateUriWithQuery(string query, params object[] components)
     {
         var builder = new StringBuilder(BaseUri);
         for (int i = 0; i < components.Length; i++)
@@ -88,6 +97,8 @@ public static class WebhookApi
             builder.Append(components[i]);
         }
 
-        return builder.ToString();
+        builder.Append(query);
+
+        return new Uri(builder.ToString());
     }
 }
