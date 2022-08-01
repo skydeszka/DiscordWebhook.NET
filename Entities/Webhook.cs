@@ -71,9 +71,11 @@ public class Webhook
     /// </returns>
     public bool SendMessage(string message, bool useTts = false)
     {
-        var parameters = new ExecuteWebhookParams();
-        parameters.content = message;
-        parameters.tts = useTts;
+        var parameters = new ExecuteWebhookParams
+        {
+            content = message,
+            tts = useTts
+        };
 
         try { WebhookApi.Post(this, parameters); }
         catch (Exception) { return false; }
@@ -93,9 +95,12 @@ public class Webhook
     /// </returns>
     public bool SendMessage(string message, string customUsername, bool useTts = false)
     {
-        var parameters = new ExecuteWebhookParams();
-        parameters.content = message;
-        parameters.username = customUsername;
+        var parameters = new ExecuteWebhookParams
+        {
+            content = message,
+            username = customUsername,
+            tts = useTts
+        };
 
         try { WebhookApi.Post(this, parameters); }
         catch (Exception) { return false; }
@@ -115,9 +120,11 @@ public class Webhook
     /// </returns>
     public bool SendMessageInThread(string message, ulong thread_id, bool useTts = false)
     {
-        var parameters = new ExecuteWebhookParams();
-        parameters.content = message;
-        parameters.tts = useTts;
+        var parameters = new ExecuteWebhookParams
+        {
+            content = message,
+            tts = useTts
+        };
 
         var query = new ExecuteWebhookQuery(thread_id);
 
@@ -140,9 +147,12 @@ public class Webhook
     /// </returns>
     public bool SendMessageInThread(string message, string customUsername, ulong thread_id, bool useTts = false)
     {
-        var parameters = new ExecuteWebhookParams();
-        parameters.content = message;
-        parameters.username = customUsername;
+        var parameters = new ExecuteWebhookParams
+        {
+            content = message,
+            username = customUsername,
+            tts = useTts
+        };
 
         var query = new ExecuteWebhookQuery(thread_id);
 

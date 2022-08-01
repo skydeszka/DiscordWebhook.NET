@@ -1,5 +1,5 @@
-﻿using DiscordWebhook.Entities;
-using DiscordWebhook.Exceptions;
+﻿using DiscordWebhook.Exceptions;
+using DiscordWebhook.Entities;
 using System.Text;
 
 namespace DiscordWebhook.Core;
@@ -20,11 +20,13 @@ public static class WebhookApi
     public static Webhook? Get(ulong id, string token)
     {
         using var client = new HttpClient();
-        var uri = new Uri(ConcentrateUri(id, token));
+        var uri = ConcentrateUri(id, token);
         client.BaseAddress = uri;
 
-        var request = new HttpRequestMessage();
-        request.Method = HttpMethod.Get;
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Get
+        };
 
         HttpResponseMessage response = client.Send(request);
 
@@ -54,9 +56,11 @@ public static class WebhookApi
         var uri = ConcentrateUri(webhook.Id, webhook.Token);
         client.BaseAddress = uri;
 
-        var request = new HttpRequestMessage();
-        request.Method = HttpMethod.Post;
-        request.Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Post,
+            Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json")
+        };
 
         HttpResponseMessage response = client.Send(request);
 
@@ -81,9 +85,11 @@ public static class WebhookApi
         var uri = ConcentrateUriWithQuery(query.ToString(), webhook.Id, webhook.Token);
         client.BaseAddress = uri;
 
-        var request = new HttpRequestMessage();
-        request.Method = HttpMethod.Post;
-        request.Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Post,
+            Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json")
+        };
 
         HttpResponseMessage response = client.Send(request);
 

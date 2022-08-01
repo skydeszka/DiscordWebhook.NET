@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace DiscordWebhook.Entities;
 
@@ -30,7 +26,7 @@ public struct ExecuteWebhookQuery
         {
             builder.Append("wait=");
             builder.Append(wait);
-            builder.Append('&')
+            builder.Append('&');
         }
 
         if(threadId is not null)
