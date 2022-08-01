@@ -1,4 +1,6 @@
-﻿namespace DiscordWebhook.Entities;
+﻿using Newtonsoft.Json;
+
+namespace DiscordWebhook.Entities;
 
 public struct ExecuteWebhookParams
 {
@@ -11,4 +13,6 @@ public struct ExecuteWebhookParams
     //public Embed[] embeds;
 
     public bool? allowed_mentions;
+
+    public override string ToString() => JsonConvert.SerializeObject(this);
 }
