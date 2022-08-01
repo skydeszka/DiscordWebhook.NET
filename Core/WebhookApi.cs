@@ -130,6 +130,9 @@ public static class WebhookApi
             builder.Append(components[i]);
         }
 
+        if (!query.StartsWith("?"))
+            builder.Append('?');
+
         builder.Append(query);
 
         return new Uri(builder.ToString());

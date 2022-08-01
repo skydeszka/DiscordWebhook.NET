@@ -21,7 +21,8 @@ public struct ExecuteWebhookQuery
 
     public override string ToString()
     {
-        var builder = new StringBuilder('?');
+        var builder = new StringBuilder();
+        builder.Append('?');
         if (wait is not null)
         {
             builder.Append("wait=");
