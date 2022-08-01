@@ -63,6 +63,22 @@ public static class WebhookApi
         if (response.IsSuccessStatusCode)
             throw new WebhookRequestFailed(response);
     }
+
+    /// <summary>
+    /// Sends a Post request to the Discord API to execute the parameters with the webhook
+    /// </summary>
+    /// <param name="webhook">The executed webhook</param>
+    /// <param name="parameters">The execution parameters</param>
+    /// <param name="query">The query parameters</param>
+    /// <exception cref="WebhookHasNoToken"></exception>
+    /// <exception cref="WebhookRequestFailed"></exception>
+    public static void Post(Webhook webhook, ExecuteWebhookParams parameters, ExecuteWebhookQuery query)
+    {
+        if (webhook.Token is null)
+            throw new WebhookHasNoToken();
+
+        using var client = new HttpClient();
+        var uri = ConcentrateUriWithQuery(query.ToString(), webhook.Id, webhook.Token);
         client.BaseAddress = uri;
 
         var request = new HttpRequestMessage();
