@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DiscordWebhook.Core;
+using Newtonsoft.Json;
 
 namespace DiscordWebhook.Entities;
 
@@ -57,6 +58,98 @@ public class Webhook
         var test = JsonConvert.DeserializeObject<Webhook>(jsonObject);
 
         return test;
+    }
+
+    /// <summary>
+    /// Sends a message with the webhook
+    /// </summary>
+    /// <param name="message">The message to be sent</param>
+    /// <param name="useTts">If the message should use TTS</param>
+    /// <returns>
+    ///     true if the message was sent,
+    ///     false if the message was not sent
+    /// </returns>
+    public bool SendMessage(string message, bool useTts = false)
+    {
+        var parameters = new ExecuteWebhookParams();
+        parameters.content = message;
+        parameters.tts = useTts;
+
+        try { WebhookApi.Post(this, parameters); }
+        catch (Exception) { return false; }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Sends a message with the webhook and overrides its username
+    /// </summary>
+    /// <param name="message">The message to be sent</param>
+    /// <param name="customUsername">The new username</param>
+    /// <param name="useTts">If the message should use TTS</param>
+    /// <returns>
+    ///     true if the message was sent,
+    ///     false if the message was not sent
+    /// </returns>
+    public bool SendMessage(string message, string customUsername, bool useTts = false)
+    {
+        var parameters = new ExecuteWebhookParams();
+        parameters.content = message;
+        parameters.username = customUsername;
+
+        try { WebhookApi.Post(this, parameters); }
+        catch (Exception) { return false; }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Sends a message with the webhook to a thread
+    /// </summary>
+    /// <param name="message">The message to be sent</param>
+    /// <param name="thread_id">The ID of the thread</param>
+    /// <param name="useTts">If the message should use TTS</param>
+    /// <returns>
+    ///     true if the message was sent,
+    ///     false if the message was not sent
+    /// </returns>
+    public bool SendMessageInThread(string message, ulong thread_id, bool useTts = false)
+    {
+        var parameters = new ExecuteWebhookParams();
+        parameters.content = message;
+        parameters.tts = useTts;
+
+        var query = new ExecuteWebhookQuery(thread_id);
+
+        try { WebhookApi.Post(this, parameters, query); }
+        catch (Exception) { return false; }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Sends a message with the webhook to a thread and overrides its username
+    /// </summary>
+    /// <param name="message">The message to be sent</param>
+    /// <param name="customUsername">The new username</param>
+    /// <param name="thread_id">The ID of the thread</param>
+    /// <param name="useTts">If the message should use TTS</param>
+    /// <returns>
+    ///     true if the message was sent,
+    ///     false if the message was not sent
+    /// </returns>
+    public bool SendMessageInThread(string message, string customUsername, ulong thread_id, bool useTts = false)
+    {
+        var parameters = new ExecuteWebhookParams();
+        parameters.content = message;
+        parameters.username = customUsername;
+
+        var query = new ExecuteWebhookQuery(thread_id);
+
+        try { WebhookApi.Post(this, parameters, query); }
+        catch (Exception) { return false; }
+
+        return true;
     }
 
     public override string ToString()
