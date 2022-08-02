@@ -9,8 +9,6 @@ public class Embed
         public const int Title = 256;
         public const int Description = 4096;
 
-        public const int Embeds = 10;
-
         public const int Fields = 25;
         public const int FieldName = 256;
         public const int FieldValue = 1024;
@@ -60,6 +58,38 @@ public class Embed
     public EmbedAuthor? Author { get; set; }
 
     [JsonProperty("fields")]
-    public EmbedField[]? Fields { get; set; }
+    public IList<EmbedField>? Fields { get; private set; }
     #endregion
+
+    public bool AddField(EmbedField field)
+    {
+        if (Fields is null)
+            Fields = new List<EmbedField>();
+
+        if (Fields.Count + 1 > EmbedLimits.Fields)
+            return false;
+
+        Fields.Add(field);
+
+        return true;
+    }
+
+    public void RemoveFieldAt(int index)
+    {
+        if (Fields is null)
+            return;
+
+        Fields.RemoveAt(index);
+    }
+
+    public bool RemoveField(EmbedField field)
+    {
+        if (Fields is null)
+            return false;
+
+        return Fields.Remove(field);
+    }
+
+    public EmbedField? FieldAt(int index) => 
+        Fields is null ? null : Fields[index];
 }
