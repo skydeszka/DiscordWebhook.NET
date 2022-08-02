@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DiscordWebhook.Core;
 
-public static class WebhookApi
+internal static class WebhookApi
 {
     private const string BaseUri = "https://discord.com/api/webhooks";
 
