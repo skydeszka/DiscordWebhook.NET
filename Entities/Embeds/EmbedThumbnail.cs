@@ -8,7 +8,7 @@ public class EmbedThumbnail
     public string Url { get; private set; } = string.Empty;
 
     [JsonProperty("proxy_url")]
-    public string ProxyUrl { get; private set; } = string.Empty;
+    public string? ProxyUrl { get; private set; }
 
     [JsonProperty("height")]
     public int Height { get; private set; }
