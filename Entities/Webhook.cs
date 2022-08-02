@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace DiscordWebhook.Entities;
 
+/// <summary>
+/// The class that hold the information of the Discord Webhook
+/// </summary>
 public class Webhook
 {
     #region Properties
@@ -53,16 +56,31 @@ public class Webhook
         Token = token;
     }
 
+    /// <summary>
+    /// Fetches the Webhook object with the given ID and Token
+    /// </summary>
+    /// <param name="id">The ID of the webhook object</param>
+    /// <param name="token">The security Token of the webhook object</param>
+    /// <returns>The Webhook object with the given ID or null if the fetching was unsuccessful</returns>
     public static Webhook? Fetch(ulong id, string token)
     {
         try { return WebhookApi.Get(id, token); }
         catch (Exception) { return null; }
     }
 
-
+    /// <summary>
+    /// Parses a JSON object into a Webhook object
+    /// </summary>
+    /// <param name="jsonObject">The JSON object to be parsed</param>
+    /// <returns>The parsed Webhook or null if the parse failed</returns>
     public static Webhook? ParseJSON(string jsonObject) =>
         JsonConvert.DeserializeObject<Webhook>(jsonObject);
 
+    /// <summary>
+    /// Sends a Webhook message with the given options
+    /// </summary>
+    /// <param name="options">The message options</param>
+    /// <returns>true if the message was sent, otherwise false</returns>
     public bool SendMessage(WebhookMessageOptions options)
     {
         var parameters = new ExecuteWebhookParams
@@ -87,14 +105,12 @@ public class Webhook
     }
 
     /// <summary>
-    /// Sends a message with the webhook
+    /// Sends a message with the webhook.
+    /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
     /// <param name="useTts">If the message should use TTS</param>
-    /// <returns>
-    ///     true if the message was sent,
-    ///     false if the message was not sent
-    /// </returns>
+    /// <returns>true if the message was sent, otherwise false</returns>
     public bool SendMessageQuick(string message, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
@@ -111,14 +127,12 @@ public class Webhook
 
     /// <summary>
     /// Sends a message with the webhook and overrides its username
+    /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
     /// <param name="customUsername">The new username</param>
     /// <param name="useTts">If the message should use TTS</param>
-    /// <returns>
-    ///     true if the message was sent,
-    ///     false if the message was not sent
-    /// </returns>
+    /// <returns>true if the message was sent, otherwise false</returns>
     public bool SendMessageQuick(string message, string customUsername, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
@@ -136,14 +150,12 @@ public class Webhook
 
     /// <summary>
     /// Sends a message with the webhook to a thread
+    /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
     /// <param name="thread_id">The ID of the thread</param>
     /// <param name="useTts">If the message should use TTS</param>
-    /// <returns>
-    ///     true if the message was sent,
-    ///     false if the message was not sent
-    /// </returns>
+    /// <returns>true if the message was sent, otherwise false</returns>
     public bool SendMessageInThread(string message, ulong thread_id, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
@@ -162,15 +174,13 @@ public class Webhook
 
     /// <summary>
     /// Sends a message with the webhook to a thread and overrides its username
+    /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
     /// <param name="customUsername">The new username</param>
     /// <param name="thread_id">The ID of the thread</param>
     /// <param name="useTts">If the message should use TTS</param>
-    /// <returns>
-    ///     true if the message was sent,
-    ///     false if the message was not sent
-    /// </returns>
+    /// <returns>true if the message was sent, otherwise false</returns>
     public bool SendMessageInThread(string message, string customUsername, ulong thread_id, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
@@ -188,5 +198,9 @@ public class Webhook
         return true;
     }
 
+    /// <summary>
+    /// Converts the Webhook object into JSON
+    /// </summary>
+    /// <returns>The string representing the JSON object</returns>
     public string ToJSON() => JsonConvert.SerializeObject(this);
 }
