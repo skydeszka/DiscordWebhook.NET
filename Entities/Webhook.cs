@@ -95,7 +95,7 @@ public class Webhook
     ///     true if the message was sent,
     ///     false if the message was not sent
     /// </returns>
-    public bool SendMessage(string message, bool useTts = false)
+    public bool SendMessageQuick(string message, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
         {
@@ -119,7 +119,7 @@ public class Webhook
     ///     true if the message was sent,
     ///     false if the message was not sent
     /// </returns>
-    public bool SendMessage(string message, string customUsername, bool useTts = false)
+    public bool SendMessageQuick(string message, string customUsername, bool useTts = false)
     {
         var parameters = new ExecuteWebhookParams
         {
