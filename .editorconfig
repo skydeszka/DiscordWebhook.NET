@@ -208,6 +208,10 @@ dotnet_naming_rule.private_or_internal_field_should_be_underscore.severity = sug
 dotnet_naming_rule.private_or_internal_field_should_be_underscore.symbols = private_or_internal_field
 dotnet_naming_rule.private_or_internal_field_should_be_underscore.style = underscore
 
+dotnet_naming_rule.constant_field_should_be_allcaps.severity = suggestion
+dotnet_naming_rule.constant_field_should_be_allcaps.symbols = constant_field
+dotnet_naming_rule.constant_field_should_be_allcaps.style = allcaps
+
 # Symbol specifications
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
@@ -233,6 +237,10 @@ dotnet_naming_symbols.non_field_members.required_modifiers =
 dotnet_naming_symbols.static_readonly_field.applicable_kinds = field
 dotnet_naming_symbols.static_readonly_field.applicable_accessibilities = *
 dotnet_naming_symbols.static_readonly_field.required_modifiers = readonly, static
+
+dotnet_naming_symbols.constant_field.applicable_kinds = field
+dotnet_naming_symbols.constant_field.applicable_accessibilities = *
+dotnet_naming_symbols.constant_field.required_modifiers = const
 
 # Naming styles
 
