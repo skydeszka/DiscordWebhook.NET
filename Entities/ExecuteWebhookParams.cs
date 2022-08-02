@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DiscordWebhook.Entities.Embeds;
+using Newtonsoft.Json;
 
 namespace DiscordWebhook.Entities;
 
@@ -9,8 +10,7 @@ internal struct ExecuteWebhookParams
     public string? avatar_url;
     public bool? tts;
 
-    // TODO: Implement Embed class
-    //public Embed[] embeds;
+    public IList<Embed>? embeds;
 
     //public bool? allowed_mentions;
 
