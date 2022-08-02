@@ -59,12 +59,9 @@ public class Webhook
         catch (Exception) { return null; }
     }
 
-    public static Webhook? ParseJSON(string jsonObject)
-    {
-        var test = JsonConvert.DeserializeObject<Webhook>(jsonObject);
 
-        return test;
-    }
+    public static Webhook? ParseJSON(string jsonObject) =>
+        JsonConvert.DeserializeObject<Webhook>(jsonObject);
 
     public bool SendMessage(WebhookMessageOptions options)
     {
