@@ -92,4 +92,6 @@ public class Embed
 
     public EmbedField? FieldAt(int index) => 
         Fields?[index];
+
+    public string ToJSON() => JsonConvert.SerializeObject(this);
 }
