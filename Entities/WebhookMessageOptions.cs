@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities;
 
+/// <summary>
+/// Contains all message options for a Webhook message
+/// </summary>
 public struct WebhookMessageOptions
 {
     //Query String Params
