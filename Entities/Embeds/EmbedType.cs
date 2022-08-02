@@ -1,38 +1,20 @@
-﻿namespace DiscordWebhook.Entities.Embeds;
+﻿using Ardalis.SmartEnum;
+
+namespace DiscordWebhook.Entities.Embeds;
 
 /// <summary>
 /// A class representing the Discord Embed Type
 /// </summary>
-public readonly struct EmbedType
+public sealed class EmbedType : SmartEnum<EmbedType>
 {
-    public static EmbedType Rich => new("rich");
-    public static EmbedType Image => new ("image");
-    public static EmbedType Video => new ("video");
-    public static EmbedType Gifv => new ("gifv");
-    public static EmbedType Article => new ("article");
-    public static EmbedType Link => new ("link");
+    public static readonly EmbedType Rich = new("rich", 1);
+    public static readonly EmbedType Image = new("image", 2);
+    public static readonly EmbedType Video = new("video", 3);
+    public static readonly EmbedType Gifv = new("gifv", 4);
+    public static readonly EmbedType Article = new("article", 5);
+    public static readonly EmbedType Link = new("link", 6);
 
-    public readonly string current;
-
-    private EmbedType(string type) => current = type;
-
-    public static bool operator ==(EmbedType a, EmbedType b)
+    public EmbedType(string name, int value) : base(name, value)
     {
-        return a.current == b.current;
     }
-
-    public static bool operator !=(EmbedType a, EmbedType b)
-    {
-        return a.current != b.current;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is not EmbedType type)
-            return false;
-
-        return current == type.current;
-    }
-
-    public override int GetHashCode() => base.GetHashCode();
 }
