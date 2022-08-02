@@ -1,4 +1,5 @@
-﻿using DiscordWebhook.Entities.Embeds;
+﻿using DiscordWebhook.Entities.Components;
+using DiscordWebhook.Entities.Embeds;
 
 namespace DiscordWebhook.Entities;
 
@@ -17,11 +18,21 @@ public struct WebhookMessageOptions
     public string? AvatarUrl = null;
 
     public bool Tts = false;
+
     public IList<Embed>? Embeds = null;
-    // TODO: Implement AllowedMentions class
-    //public AllowedMentions? AllowedMentions = null;
-    // TODO: Implement rest of params
-    // https://discord.com/developers/docs/resources/webhook#execute-webhook
+    public AllowedMention? AllowedMentions = null;
+
+    //Requires application-owned webhook
+    public IList<Component>? Components = null;
+
+    //  TODO: FILES
+    //  files[n]
+    //  payload_json
+    //  attachments
+
+    public bool SupressEmbeds = false;
+
+    public string? ThreadName = null;
 
     public WebhookMessageOptions() { }
 }
