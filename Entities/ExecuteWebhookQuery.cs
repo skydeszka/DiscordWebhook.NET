@@ -2,7 +2,7 @@
 
 namespace DiscordWebhook.Entities;
 
-public struct ExecuteWebhookQuery
+internal struct ExecuteWebhookQuery
 {
     public bool? wait = null;
     public ulong? threadId = null;
