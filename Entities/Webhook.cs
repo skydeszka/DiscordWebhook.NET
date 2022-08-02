@@ -60,6 +60,28 @@ public class Webhook
         return test;
     }
 
+    public bool SendMessage(WebhookMessageOptions options)
+    {
+        var parameters = new ExecuteWebhookParams
+        {
+            content = options.Content,
+            username = options.Username,
+            avatar_url = options.AvatarUrl,
+            tts = options.Tts
+        };
+
+        var query = new ExecuteWebhookQuery
+        {
+            wait = options.Wait,
+            threadId = options.ThreadId
+        };
+
+        try { WebhookApi.Post(this, parameters, query); }
+        catch (Exception) { return false; }
+
+        return true;
+    }
+
     /// <summary>
     /// Sends a message with the webhook
     /// </summary>
