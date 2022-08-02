@@ -53,7 +53,7 @@ public class Webhook
         Token = token;
     }
 
-    public static Webhook? Fetch(ulong id, string token) => WebhookApi.Get(id, token);
+    public static Webhook Fetch(ulong id, string token) => WebhookApi.Get(id, token);
 
     public static Webhook? ParseJSON(string jsonObject)
     {
