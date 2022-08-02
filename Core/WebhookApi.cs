@@ -6,7 +6,7 @@ namespace DiscordWebhook.Core;
 
 internal static class WebhookApi
 {
-    private const string BaseUri = "https://discord.com/api/webhooks";
+    private const string BASEURI = "https://discord.com/api/webhooks";
 
     /// <summary>
     /// Sends a Get request to the Discord API to get the webhook object
@@ -18,6 +18,7 @@ internal static class WebhookApi
     ///     null if the request was unsuccessful
     /// </returns>
     public static Webhook? Get(ulong id, string token)
+    public static Webhook Get(ulong id, string token)
     {
         using var client = new HttpClient();
         var uri = ConcentrateUri(id, token);
@@ -31,11 +32,20 @@ internal static class WebhookApi
         HttpResponseMessage response = client.Send(request);
 
         if (!response.IsSuccessStatusCode)
-            return null;
+        {
+            throw response.StatusCode switch
+            {
+                HttpStatusCode.Unauthorized => new WebhookUnauthorizedException(),
+                _ => new WebhookRequestFailedException(response),
+            };
+        }
 
         string content = response.Content.ReadAsStringAsync().Result;
 
         var webhook = Webhook.ParseJSON(content);
+
+        if (webhook is null)
+            throw new WebhookParseFailedException(content);
 
         return webhook;
     }
@@ -50,7 +60,7 @@ internal static class WebhookApi
     public static void Post(Webhook webhook, ExecuteWebhookParams parameters)
     {
         if (webhook.Token is null)
-            throw new WebhookHasNoToken();
+            throw new WebhookHasNoTokenException();
 
         using var client = new HttpClient();
         var uri = ConcentrateUri(webhook.Id, webhook.Token);
@@ -64,8 +74,8 @@ internal static class WebhookApi
 
         HttpResponseMessage response = client.Send(request);
 
-        if (response.IsSuccessStatusCode)
-            throw new WebhookRequestFailed(response);
+        if (!response.IsSuccessStatusCode)
+            throw new WebhookRequestFailedException(response);
     }
 
     /// <summary>
@@ -79,7 +89,7 @@ internal static class WebhookApi
     public static void Post(Webhook webhook, ExecuteWebhookParams parameters, ExecuteWebhookQuery query)
     {
         if (webhook.Token is null)
-            throw new WebhookHasNoToken();
+            throw new WebhookHasNoTokenException();
 
         using var client = new HttpClient();
         var uri = ConcentrateUriWithQuery(query.ToString(), webhook.Id, webhook.Token);
@@ -93,8 +103,8 @@ internal static class WebhookApi
 
         HttpResponseMessage response = client.Send(request);
 
-        if (response.IsSuccessStatusCode)
-            throw new WebhookRequestFailed(response);
+        if (!response.IsSuccessStatusCode)
+            throw new WebhookRequestFailedException(response);
     }
 
     /// <summary>
@@ -104,7 +114,7 @@ internal static class WebhookApi
     /// <returns>The concentrated Uri</returns>
     private static Uri ConcentrateUri(params object[] components)
     {
-        var builder = new StringBuilder(BaseUri);
+        var builder = new StringBuilder(BASEURI);
         for (int i = 0; i < components.Length; i++)
         {
             builder.Append('/');
@@ -123,7 +133,7 @@ internal static class WebhookApi
     /// <returns>The concentrated Uri and query</returns>
     private static Uri ConcentrateUriWithQuery(string query, params object[] components)
     {
-        var builder = new StringBuilder(BaseUri);
+        var builder = new StringBuilder(BASEURI);
         for (int i = 0; i < components.Length; i++)
         {
             builder.Append('/');
