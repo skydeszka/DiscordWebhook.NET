@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
+/// <summary>
+/// A class representing the Discord Embed Image
+/// </summary>
 public struct EmbedImage
 {
     [JsonProperty("url")]

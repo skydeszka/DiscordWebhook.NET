@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace DiscordWebhook.Entities;
 
+/// <summary>
+/// The body parameters for the Webhook POST request
+/// </summary>
 internal struct ExecuteWebhookParams
 {
     public string? content;
@@ -14,5 +17,9 @@ internal struct ExecuteWebhookParams
 
     //public bool? allowed_mentions;
 
+    /// <summary>
+    /// Converts the parameters into a JSON object
+    /// </summary>
+    /// <returns>The string representative of the JSON object</returns>
     public string ToJSON() => JsonConvert.SerializeObject(this);
 }

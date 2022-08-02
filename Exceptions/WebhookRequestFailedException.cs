@@ -1,6 +1,10 @@
 ﻿using System.Runtime.Serialization;
 
 namespace DiscordWebhook.Exceptions;
+
+/// <summary>
+/// The exception is thrown when a Webhook request failed with an unhandled Http error code.
+/// </summary>
 [Serializable]
 internal class WebhookRequestFailedException : Exception
 {

@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
+/// <summary>
+/// A class representing the Discord Embed Author.
+/// </summary>
 public struct EmbedAuthor
 {
     [JsonProperty("name")]

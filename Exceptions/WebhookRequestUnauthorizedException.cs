@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Exceptions;
 
+/// <summary>
+/// The exception is thrown when a Webhook request responds with a Unauthorized Http code.
+/// </summary>
 [Serializable]
 internal class WebhookRequestUnauthorizedException : Exception
 {

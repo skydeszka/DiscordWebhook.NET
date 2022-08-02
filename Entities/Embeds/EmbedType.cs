@@ -1,5 +1,8 @@
 ﻿namespace DiscordWebhook.Entities.Embeds;
 
+/// <summary>
+/// A class representing the Discord Embed Type
+/// </summary>
 public readonly struct EmbedType
 {
     public static EmbedType Rich => new("rich");

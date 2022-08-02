@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
+/// <summary>
+/// A class representing the Discord Embed Field.
+/// </summary>
 public struct EmbedField
 {
     [JsonProperty("name")]

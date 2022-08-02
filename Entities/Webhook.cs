@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace DiscordWebhook.Entities;
 
 /// <summary>
-/// The class that hold the information of the Discord Webhook
+/// The class that hold the information of the Discord Webhook.
 /// </summary>
 public class Webhook
 {
@@ -57,7 +57,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Fetches the Webhook object with the given ID and Token
+    /// Fetches the Webhook object with the given ID and Token.
     /// </summary>
     /// <param name="id">The ID of the webhook object</param>
     /// <param name="token">The security Token of the webhook object</param>
@@ -69,7 +69,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Parses a JSON object into a Webhook object
+    /// Parses a JSON object into a Webhook object.
     /// </summary>
     /// <param name="jsonObject">The JSON object to be parsed</param>
     /// <returns>The parsed Webhook or null if the parse failed</returns>
@@ -77,7 +77,7 @@ public class Webhook
         JsonConvert.DeserializeObject<Webhook>(jsonObject);
 
     /// <summary>
-    /// Sends a Webhook message with the given options
+    /// Sends a Webhook message with the given options.
     /// </summary>
     /// <param name="options">The message options</param>
     /// <returns>true if the message was sent, otherwise false</returns>
@@ -126,7 +126,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Sends a message with the webhook and overrides its username
+    /// Sends a message with the webhook and overrides its username.
     /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
@@ -149,7 +149,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Sends a message with the webhook to a thread
+    /// Sends a message with the webhook to a thread.
     /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
@@ -173,7 +173,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Sends a message with the webhook to a thread and overrides its username
+    /// Sends a message with the webhook to a thread and overrides its username.
     /// Use this to send a quick message.
     /// </summary>
     /// <param name="message">The message to be sent</param>
@@ -199,7 +199,7 @@ public class Webhook
     }
 
     /// <summary>
-    /// Converts the Webhook object into JSON
+    /// Converts the Webhook object into JSON.
     /// </summary>
     /// <returns>The string representing the JSON object</returns>
     public string ToJSON() => JsonConvert.SerializeObject(this);

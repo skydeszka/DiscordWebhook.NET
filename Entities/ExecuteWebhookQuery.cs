@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities;
 
+/// <summary>
+/// The Query options for the Webhook POST request
+/// </summary>
 internal struct ExecuteWebhookQuery
 {
     public bool? wait = null;
@@ -19,6 +22,10 @@ internal struct ExecuteWebhookQuery
         this.wait = wait;
     }
 
+    /// <summary>
+    /// Creates the query string
+    /// </summary>
+    /// <returns>The query string</returns>
     public override string ToString()
     {
         var builder = new StringBuilder();

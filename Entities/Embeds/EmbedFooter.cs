@@ -2,6 +2,9 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
+/// <summary>
+/// A class representing the Discord Embed Footer
+/// </summary>
 public struct EmbedFooter
 {
     [JsonProperty("text")]

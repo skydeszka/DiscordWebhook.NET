@@ -1,6 +1,10 @@
 ﻿using System.Runtime.Serialization;
 
 namespace DiscordWebhook.Exceptions;
+
+/// <summary>
+/// The exception is thrown when a Webhook object doesn't have a token when required.
+/// </summary>
 [Serializable]
 internal class WebhookHasNoTokenException : Exception
 {

@@ -1,6 +1,10 @@
 ﻿using System.Runtime.Serialization;
 
 namespace DiscordWebhook.Exceptions;
+
+/// <summary>
+/// The exception is thrown when a Webhook cannot be parsed from a JSON object.
+/// </summary>
 [Serializable]
 internal class WebhookParseFailedException : Exception
 {
