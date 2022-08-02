@@ -4,7 +4,7 @@ namespace DiscordWebhook.Entities;
 
 public struct ExecuteWebhookParams
 {
-    public string content;
+    public string? content;
     public string? username;
     public string? avatar_url;
     public bool? tts;
