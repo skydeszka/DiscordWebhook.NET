@@ -6,18 +6,18 @@ public class Embed
 {
     public static class EmbedLimits
     {
-        public const int Title = 256;
-        public const int Description = 4096;
+        public const int TITLE = 256;
+        public const int DESCRIPTION = 4096;
 
-        public const int Fields = 25;
-        public const int FieldName = 256;
-        public const int FieldValue = 1024;
+        public const int FIELDS = 25;
+        public const int FIELDNAME = 256;
+        public const int FIELDVALUE = 1024;
 
-        public const int FooterText = 2048;
+        public const int FOOTERTEXT = 2048;
 
-        public const int AuthorName = 256;
+        public const int AUTHORNAME = 256;
 
-        public const int TotalMax = 6000;
+        public const int TOTALMAX = 6000;
     }
 
     #region Properties
@@ -66,7 +66,7 @@ public class Embed
         if (Fields is null)
             Fields = new List<EmbedField>();
 
-        if (Fields.Count + 1 > EmbedLimits.Fields)
+        if (Fields.Count + 1 > EmbedLimits.FIELDS)
             return false;
 
         Fields.Add(field);
