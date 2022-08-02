@@ -59,7 +59,7 @@ public static class WebhookApi
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Post,
-            Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json")
+            Content = new StringContent(parameters.ToJSON(), Encoding.UTF8, "application/json")
         };
 
         HttpResponseMessage response = client.Send(request);
@@ -88,7 +88,7 @@ public static class WebhookApi
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Post,
-            Content = new StringContent(parameters.ToString(), Encoding.UTF8, "application/json")
+            Content = new StringContent(parameters.ToJSON(), Encoding.UTF8, "application/json")
         };
 
         HttpResponseMessage response = client.Send(request);

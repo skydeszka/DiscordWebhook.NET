@@ -2,7 +2,7 @@
 
 namespace DiscordWebhook.Entities;
 
-public struct ExecuteWebhookParams
+internal struct ExecuteWebhookParams
 {
     public string? content;
     public string? username;
@@ -12,7 +12,7 @@ public struct ExecuteWebhookParams
     // TODO: Implement Embed class
     //public Embed[] embeds;
 
-    public bool? allowed_mentions;
+    //public bool? allowed_mentions;
 
-    public override string ToString() => JsonConvert.SerializeObject(this);
+    public string ToJSON() => JsonConvert.SerializeObject(this);
 }
