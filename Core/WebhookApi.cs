@@ -1,11 +1,18 @@
 ﻿using DiscordWebhook.Exceptions;
 using DiscordWebhook.Entities;
 using System.Text;
+using System.Net;
 
 namespace DiscordWebhook.Core;
 
+/// <summary>
+/// The class that interacts with the Discord API and works as a Middleware
+/// </summary>
 internal static class WebhookApi
 {
+    /// <summary>
+    /// The URL for the Discord Webhook API
+    /// </summary>
     private const string BASEURI = "https://discord.com/api/webhooks";
 
     /// <summary>
@@ -13,11 +20,9 @@ internal static class WebhookApi
     /// </summary>
     /// <param name="id">ID of the webhook</param>
     /// <param name="token">Token of the webhook</param>
-    /// <returns>
-    ///     Webhook if the request was successful,
-    ///     null if the request was unsuccessful
-    /// </returns>
-    public static Webhook? Get(ulong id, string token)
+    /// <returns>The Webhook object if the request was successful</returns>
+    /// <exception cref="WebhookUnauthorizedException"></exception>
+    /// <exception cref="WebhookRequestFailedException"></exception>
     public static Webhook Get(ulong id, string token)
     {
         using var client = new HttpClient();
@@ -55,8 +60,8 @@ internal static class WebhookApi
     /// </summary>
     /// <param name="webhook">The executed webhook</param>
     /// <param name="parameters">The execution parameters</param>
-    /// <exception cref="WebhookHasNoToken"></exception>
-    /// <exception cref="WebhookRequestFailed"></exception>
+    /// <exception cref="WebhookHasNoTokenException"></exception>
+    /// <exception cref="WebhookRequestFailedException"></exception>
     public static void Post(Webhook webhook, ExecuteWebhookParams parameters)
     {
         if (webhook.Token is null)
@@ -84,8 +89,8 @@ internal static class WebhookApi
     /// <param name="webhook">The executed webhook</param>
     /// <param name="parameters">The execution parameters</param>
     /// <param name="query">The query parameters</param>
-    /// <exception cref="WebhookHasNoToken"></exception>
-    /// <exception cref="WebhookRequestFailed"></exception>
+    /// <exception cref="WebhookHasNoTokenException"></exception>
+    /// <exception cref="WebhookRequestFailedException"></exception>
     public static void Post(Webhook webhook, ExecuteWebhookParams parameters, ExecuteWebhookQuery query)
     {
         if (webhook.Token is null)
