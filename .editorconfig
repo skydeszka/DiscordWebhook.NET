@@ -198,7 +198,7 @@ dotnet_naming_rule.static_field_should_be_camel_case.style = camel_case
 
 dotnet_naming_rule.static_readonly_field_should_be_allcaps.severity = suggestion
 dotnet_naming_rule.static_readonly_field_should_be_allcaps.symbols = static_readonly_field
-dotnet_naming_rule.static_readonly_field_should_be_allcaps.style = allcaps
+dotnet_naming_rule.static_readonly_field_should_be_allcaps.style = pascal_case
 
 dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
