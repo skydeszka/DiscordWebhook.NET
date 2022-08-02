@@ -91,5 +91,5 @@ public class Embed
     }
 
     public EmbedField? FieldAt(int index) => 
-        Fields is null ? null : Fields[index];
+        Fields?[index];
 }
