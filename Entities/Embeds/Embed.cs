@@ -31,7 +31,7 @@ public class Embed
     public string? Description { get; private set; }
 
     [JsonProperty("url")]
-    public Uri? Url { get; private set; }
+    public string? Url { get; private set; }
 
     [JsonProperty("timestamp")]
     public ulong? Timestamp { get; private set; }
