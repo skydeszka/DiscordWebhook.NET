@@ -21,7 +21,7 @@ internal static class WebhookApi
     /// <param name="id">ID of the webhook</param>
     /// <param name="token">Token of the webhook</param>
     /// <returns>The Webhook object if the request was successful</returns>
-    /// <exception cref="WebhookUnauthorizedException"></exception>
+    /// <exception cref="WebhookRequestUnauthorizedException"></exception>
     /// <exception cref="WebhookRequestFailedException"></exception>
     public static Webhook Get(ulong id, string token)
     {
@@ -40,7 +40,7 @@ internal static class WebhookApi
         {
             throw response.StatusCode switch
             {
-                HttpStatusCode.Unauthorized => new WebhookUnauthorizedException(),
+                HttpStatusCode.Unauthorized => new WebhookRequestUnauthorizedException(),
                 _ => new WebhookRequestFailedException(response),
             };
         }
