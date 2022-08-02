@@ -22,42 +22,42 @@ public class Embed
 
     #region Properties
     [JsonProperty("title")]
-    public string? Title { get; private set; }
+    public string? Title { get; set; }
 
     [JsonProperty("type")]
-    public EmbedType? Type { get; private set; }
+    public EmbedType? Type { get; set; }
 
     [JsonProperty("description")]
-    public string? Description { get; private set; }
+    public string? Description { get; set; }
 
     [JsonProperty("url")]
-    public string? Url { get; private set; }
+    public string? Url { get; set; }
 
     [JsonProperty("timestamp")]
-    public ulong? Timestamp { get; private set; }
+    public ulong? Timestamp { get; set; }
 
     [JsonProperty("color")]
-    public int? Color { get; private set; }
+    public int? Color { get; set; }
 
     [JsonProperty("footer")]
-    public EmbedFooter? Footer { get; private set; }
+    public EmbedFooter? Footer { get; set; }
 
     [JsonProperty("image")]
-    public EmbedImage? Image { get; private set; }
+    public EmbedImage? Image { get; set; }
 
     [JsonProperty("thumbnail")]
-    public EmbedThumbnail? Thumbnail { get; private set; }
+    public EmbedThumbnail? Thumbnail { get; set; }
 
     [JsonProperty("video")]
-    public EmbedVideo? Video { get; private set; }
+    public EmbedVideo? Video { get; set; }
 
     [JsonProperty("provider")]
-    public EmbedProvider? Provider { get; private set; }
+    public EmbedProvider? Provider { get; set; }
 
     [JsonProperty("author")]
-    public EmbedAuthor? Author { get; private set; }
+    public EmbedAuthor? Author { get; set; }
 
     [JsonProperty("fields")]
-    public EmbedField[]? Fields { get; private set; }
+    public EmbedField[]? Fields { get; set; }
     #endregion
 }
