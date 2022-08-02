@@ -1,15 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace DiscordWebhook.Entities.Embeds;
+﻿namespace DiscordWebhook.Entities.Embeds;
 
 public readonly struct EmbedType
 {
-    public EmbedType Rich => new EmbedType("rich");
-    public EmbedType Image => new EmbedType("image");
-    public EmbedType Video => new EmbedType("video");
-    public EmbedType Gifv => new EmbedType("gifv");
-    public EmbedType Article => new EmbedType("article");
-    public EmbedType Link => new EmbedType("link");
+    public static EmbedType Rich => new("rich");
+    public static EmbedType Image => new ("image");
+    public static EmbedType Video => new ("video");
+    public static EmbedType Gifv => new ("gifv");
+    public static EmbedType Article => new ("article");
+    public static EmbedType Link => new ("link");
 
     public readonly string current;
 

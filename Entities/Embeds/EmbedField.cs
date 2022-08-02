@@ -2,7 +2,7 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
-public class EmbedField
+public struct EmbedField
 {
     [JsonProperty("name")]
     public string Name { get; set; } = string.Empty;
@@ -12,4 +12,6 @@ public class EmbedField
 
     [JsonProperty("inline")]
     public bool? Inline { get; set; } = null;
+
+    public EmbedField() { }
 }

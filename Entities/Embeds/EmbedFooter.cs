@@ -2,14 +2,16 @@
 
 namespace DiscordWebhook.Entities.Embeds;
 
-public class EmbedFooter
+public struct EmbedFooter
 {
     [JsonProperty("text")]
     public string Text { get; set; } = string.Empty;
 
     [JsonProperty("icon_url")]
-    public string? IconUrl { get; set; }
+    public string? IconUrl { get; set; } = null;
 
     [JsonProperty("proxy_icon_url")]
-    public string? ProxyIconUrl { get; set; }
+    public string? ProxyIconUrl { get; set; } = null;
+
+    public EmbedFooter() { }
 }
