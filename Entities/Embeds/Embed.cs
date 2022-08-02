@@ -9,6 +9,8 @@ public class Embed
         public const int Title = 256;
         public const int Description = 4096;
 
+        public const int Embeds = 10;
+
         public const int Fields = 25;
         public const int FieldName = 256;
         public const int FieldValue = 1024;
