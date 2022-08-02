@@ -188,8 +188,5 @@ public class Webhook
         return true;
     }
 
-    public override string ToString()
-    {
-        return JsonConvert.SerializeObject(this);
-    }
+    public string ToJSON() => JsonConvert.SerializeObject(this);
 }
