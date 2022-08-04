@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiscordWebhook.Entities.Components;
 
-public class Button : IComponent
+public class Button : ICustomComponent
 {
     public const int LABEL_LIMIT = 80;
 

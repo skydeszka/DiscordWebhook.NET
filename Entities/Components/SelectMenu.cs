@@ -1,6 +1,6 @@
 ﻿namespace DiscordWebhook.Entities.Components;
 
-public class SelectMenu : IComponent
+public class SelectMenu : ICustomComponent
 {
     public ComponentType Type => ComponentType.SelectMenu;
 

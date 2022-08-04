@@ -1,6 +1,6 @@
 ﻿namespace DiscordWebhook.Entities.Components;
 
-public class TextInput : IComponent
+public class TextInput : ICustomComponent
 {
     public ComponentType Type => ComponentType.TextInput;
 
