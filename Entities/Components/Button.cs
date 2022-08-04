@@ -16,7 +16,7 @@ public class Button : IComponent
 
     public string? CustomId { get; set; }
 
-    public ButtonStyles Style { get; private set; } = ButtonStyles.Primary;
+    public ButtonStyle Style { get; private set; } = ButtonStyle.Primary;
 
     public string? Label { get; set; }
 
