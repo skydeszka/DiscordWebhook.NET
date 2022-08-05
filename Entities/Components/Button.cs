@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,17 @@ public class Button : ICustomComponent
 
     public string? CustomId { get; set; }
 
+    [JsonProperty("style")]
     public ButtonStyle Style { get; private set; } = ButtonStyle.Primary;
 
+    [JsonProperty("label")]
     public string? Label { get; set; }
 
     // TODO: emoji
 
+    [JsonProperty("url")]
     public string? Url { get; set; }
 
+    [JsonProperty("disabled")]
     public bool? Disabled { get; set; }
 }
