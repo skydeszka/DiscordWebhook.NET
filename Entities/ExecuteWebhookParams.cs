@@ -1,4 +1,5 @@
-﻿using DiscordWebhook.Entities.Embeds;
+﻿using DiscordWebhook.Entities.Components;
+using DiscordWebhook.Entities.Embeds;
 using Newtonsoft.Json;
 
 namespace DiscordWebhook.Entities;
@@ -14,6 +15,8 @@ internal struct ExecuteWebhookParams
     public bool? tts;
 
     public IList<Embed>? embeds;
+
+    public IList<IComponent>? components;
 
     //public bool? allowed_mentions;
 

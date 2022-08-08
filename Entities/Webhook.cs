@@ -89,7 +89,8 @@ public class Webhook
             username = options.Username,
             avatar_url = options.AvatarUrl,
             tts = options.Tts,
-            embeds = options.Embeds
+            embeds = options.Embeds,
+            components = options.Components
         };
 
         var query = new ExecuteWebhookQuery

@@ -23,7 +23,7 @@ public struct WebhookMessageOptions
     public AllowedMention? AllowedMentions = null;
 
     //Requires application-owned webhook
-    public IList<Component>? Components = null;
+    public IList<IComponent>? Components = null;
 
     //  TODO: FILES
     //  files[n]
